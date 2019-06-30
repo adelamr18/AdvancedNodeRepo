@@ -19,3 +19,4 @@ if (cluster.isMaster) {
 
     app.listen(3000);
 }
+console.log(typeof of Nan)
