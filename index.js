@@ -5,6 +5,7 @@ const cluster = require('cluster');
 process.env.UV_THREADPOOL_SIZE = 1;
 
 if (cluster.isMaster) {
+    //cause index.js to be executed again but in child mode
     cluster.fork();
 } else {
     app.get('/', (req, res) => {
@@ -14,9 +15,9 @@ if (cluster.isMaster) {
     });
 
     app.get('/fast', (req, res) => {
+        
         res.send('This was fast')
     })
 
     app.listen(3000);
 }
-console.log(typeof of Nan)

@@ -19,4 +19,10 @@ Node.js(Advanced) Notes:
 
 7-clustering means having several instances of node to handle heavy operations
 
-8-
+8- when we run node index.js for the first time a first instance of node is created and it is called the cluster manager which sets which code to execute and so on but then after a while it wont be the cluster manager and several instances of node will be created
+ 
+10- when fork is done then the index.js will be called several times
+
+11- every child has a total number of threads of 4 but we can restrict this thredpool at the begining of our code by using : 
+process.env.UV_THREADPOOL_SIZE
+ 
