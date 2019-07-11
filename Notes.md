@@ -25,4 +25,4 @@ Node.js(Advanced) Notes:
 
 11- every child has a total number of threads of 4 but we can restrict this thredpool at the begining of our code by using : 
 process.env.UV_THREADPOOL_SIZE
- 
+
