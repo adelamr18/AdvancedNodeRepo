@@ -9,6 +9,9 @@ passport.use(new googleStrategy({
     clientSecret: keys.googleClientSecret,
     callbackURL: '/auth/google/callback'
 }, (accessToken, refreshToken, profile, done) => {
+    User.findOne({
+        googleId: profile.id
+    }) 
     new User({
         googleId: profile.id
     }).save();
