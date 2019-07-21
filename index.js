@@ -28,12 +28,14 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 require('./react-with-node/models/user');
 require('./react-with-node/services/passport')
-
+const cookieSession = require('cookie-session');
+const passport = require('passport');
+const keys = require('./react-with-node/config/keys');
 
 
 mongoose
   .connect(
-    'mongodb+srv://adelamr:c1AwIwfVuv7XIJel@cluster0-4tyoy.mongodb.net/test?retryWrites=true&w=majority'
+    keys.mongoUri
   )
   .then(() => {
     console.log("Connected to database!");
@@ -56,18 +58,14 @@ app.use((req, res, next) => {
   );
   next();
 });
-
-
-
-
-
-
-
-
-
-
-
-
+app.use(
+  cookieSession({
+    maxAge: 30 * 24 * 60 * 60 * 1000,
+    keys: [keys.cookieKey],
+  }),
+);
+app.use(passport.initialize());
+app.use(passport.session());
 
 const port = process.env.port || 5000;
 app.listen(port);
