@@ -11,8 +11,17 @@ passport.use(new googleStrategy({
 }, (accessToken, refreshToken, profile, done) => {
     User.findOne({
         googleId: profile.id
-    }) 
-    new User({
-        googleId: profile.id
-    }).save();
+    }).then((existingUser) => {
+        if (existingUser) {
+            done(null, existingUser);
+        }
+        else {
+            new User({
+                googleId: profile.id
+            }).save()
+                .then(user => {
+                    done(null, user);
+                })
+        }
+    })
 }));
