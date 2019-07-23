@@ -23,7 +23,6 @@
 // }
 const express = require('express');
 const app = express();
-require('./react-with-node/routes/authRoutes')(app);
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 require('./react-with-node/models/user');
@@ -66,6 +65,8 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
+require('./react-with-node/routes/authRoutes')(app);
+
 
 const port = process.env.port || 5000;
 app.listen(port);

@@ -1,17 +1,22 @@
-const express = require('express');
-const app = express();
-const crypto = require('crypto');
+// const express = require('express');
+// const app = express();
+// const crypto = require('crypto');
+//     app.get('/', (req, res) => {
+//         crypto.pbkdf2('a', 'b', 100000, 512, 'sha512', () => {
+//             res.send('Hi there')
+//         });
+//     });
 
+//     app.get('/fast', (req, res) => {
 
-    app.get('/', (req, res) => {
-        crypto.pbkdf2('a', 'b', 100000, 512, 'sha512', () => {
-            res.send('Hi there')
-        });
-    });
+//         res.send('This was fast')
+//     })
+//     app.listen(3000);
+// https://rallycoding.herokuapp.com/api/music_albums
 
-    app.get('/fast', (req, res) => {
-        
-        res.send('This was fast')
-    })
-
-    app.listen(3000);
+ async function fetchAlbums() {
+   const res = await fetch('https://rallycoding.herokuapp.com/api/music_albums');
+   const json = await res.json();
+   console.log(json);
+ };
+fetchAlbums();
