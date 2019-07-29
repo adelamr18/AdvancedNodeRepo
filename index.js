@@ -66,6 +66,9 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 require('./react-with-node/routes/authRoutes')(app);
+require('./react-with-node/routes/billingRoutes')(app);
+//the two require statements both return a function and we make this function take the app
+//as a parameter to execute the function on it
 
 
 const port = process.env.port || 5000;

@@ -11,3 +11,10 @@ export const fetchUser = () => async dispatch => {
 };
 //we are still returning a function that makes an api get call and only
 //when the api get call resolves then we return an action
+export const handleToken = token => async dispatch => {
+  const res = await axios.post("/api/stripe", token);
+  dispatch({
+    type: FETCH_USER,
+    payload: res.data
+  });
+};

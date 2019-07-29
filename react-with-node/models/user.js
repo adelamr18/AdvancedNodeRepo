@@ -1,5 +1,9 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const userSchema = mongoose.Schema({
-googleId: String
+  googleId: String,
+  credits: {
+    type: Number,
+    default: 0
+  }
 });
-module.exports = mongoose.model('users',userSchema);
+module.exports = mongoose.model("users", userSchema);
