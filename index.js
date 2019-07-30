@@ -27,6 +27,8 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 require('./react-with-node/models/user');
 require('./react-with-node/services/passport')
+require('./react-with-node/models/Survey');
+require('./react-with-node/models/Recipient');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
 const keys = require('./react-with-node/config/keys');
@@ -67,6 +69,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 require('./react-with-node/routes/authRoutes')(app);
 require('./react-with-node/routes/billingRoutes')(app);
+require('./react-with-node/routes/surveyRoutes')(app);
 //the two require statements both return a function and we make this function take the app
 //as a parameter to execute the function on it
 
